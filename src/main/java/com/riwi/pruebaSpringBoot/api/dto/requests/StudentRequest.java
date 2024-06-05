@@ -21,6 +21,4 @@ public class StudentRequest {
     private String email;
     @NotNull(message = "The field 'Active' is required")
     private Boolean active;
-    @NotNull(message = "ClassId is required")
-    private Long classId;
 }
