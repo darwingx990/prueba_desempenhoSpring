@@ -28,7 +28,7 @@ public class Lesson {
 
     @ManyToOne
     @JoinColumn(name = "class_id", referencedColumnName = "id", nullable = false)
-    private Class classId;
+    private ClassEntity classId;
 
     @OneToMany(mappedBy = "lessonId", cascade = CascadeType.ALL, orphanRemoval = false)
     @Builder.Default
