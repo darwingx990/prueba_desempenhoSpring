@@ -28,5 +28,5 @@ public class Student {
 
     @ManyToOne
     @JoinColumn(name = "class_id", referencedColumnName = "id", nullable = false)
-    private Class classId;
+    private ClassEntity classId;
 }
