@@ -4,6 +4,7 @@ import com.riwi.pruebaSpringBoot.api.dto.requests.StudentRequest;
 import com.riwi.pruebaSpringBoot.api.dto.responses.StudentResponse;
 import com.riwi.pruebaSpringBoot.domain.repositories.StudentRepository;
 import com.riwi.pruebaSpringBoot.infrastructure.abstract_service.IStudentService;
+import com.riwi.pruebaSpringBoot.utils.enums.SortType;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +18,7 @@ public class StudentService implements IStudentService {
     }
 
     @Override
-    public Page<StudentResponse> getAll(int page, int size) {
+    public Page<StudentResponse> getAll(int page, int size, SortType sort) {
         return null;
     }
 

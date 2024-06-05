@@ -23,8 +23,9 @@ public class ClassEntity {
     private String name;
     @Column(nullable = false, columnDefinition = "TEXT")
     private String description;
+    @Builder.Default
     @Column(nullable = false)
-    private LocalDateTime createdAt;
+    private LocalDateTime createdAt=LocalDateTime.now();
     @Column(nullable = false)
     private Boolean active;
 
