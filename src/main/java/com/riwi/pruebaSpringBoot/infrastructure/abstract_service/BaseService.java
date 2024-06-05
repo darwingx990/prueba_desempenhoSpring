@@ -1,17 +1,18 @@
 package com.riwi.pruebaSpringBoot.infrastructure.abstract_service;
 
+import com.riwi.pruebaSpringBoot.utils.enums.SortType;
 import org.springframework.data.domain.Page;
 
 public interface BaseService <RequestDto, ResponseDto, ID>{
 
-    ResponseDto getById(ID id);
+    public ResponseDto getById(ID id);
 
-    Page<ResponseDto> getAll(int page, int size);
+    public Page<ResponseDto> getAll(int page, int size, SortType sort);
 
-    ResponseDto create(RequestDto requestDto);
+    public ResponseDto create(RequestDto requestDto);
 
 
-    ResponseDto update(ID id, RequestDto requestDto);
+    public ResponseDto update(ID id, RequestDto requestDto);
 
-    void delete(ID id);
+    public void delete(ID id);
 }

@@ -14,6 +14,6 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ErrorsResp extends BaseErrorResp{
+public class ErrorsResp extends com.riwi.beautySalon.api.dto.errors.BaseErrorResp {
     private List<Map<String,String>> errors; 
 }
