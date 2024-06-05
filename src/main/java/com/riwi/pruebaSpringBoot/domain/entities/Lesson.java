@@ -27,8 +27,7 @@ public class Lesson {
     private Boolean active;
 
     @ManyToOne
-    @JoinColumn(name = "class_id", referencedColumnName = "id")
-    @Column(nullable = false)
+    @JoinColumn(name = "class_id", referencedColumnName = "id", nullable = false)
     private Class classId;
 
     @OneToMany(mappedBy = "lessonId", cascade = CascadeType.ALL, orphanRemoval = false)

@@ -27,7 +27,6 @@ public class Student {
     private Boolean active;
 
     @ManyToOne
-    @JoinColumn(name = "class_id", referencedColumnName = "id")
-    @Column(nullable = false)
+    @JoinColumn(name = "class_id", referencedColumnName = "id", nullable = false)
     private Class classId;
 }

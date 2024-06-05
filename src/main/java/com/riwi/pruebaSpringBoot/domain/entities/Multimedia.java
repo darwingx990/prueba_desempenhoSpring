@@ -29,7 +29,6 @@ public class Multimedia {
     private Boolean active;
 
     @ManyToOne
-    @JoinColumn(name = "lesson_id", referencedColumnName = "id")
-    @Column(nullable = false)
+    @JoinColumn(name = "lesson_id", referencedColumnName = "id", nullable = false)
     private Lesson lessonId;
 }
