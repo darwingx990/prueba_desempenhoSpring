@@ -51,13 +51,19 @@ public class ClassService implements IClassService {
 
     @Override
     public ClassResponse update(Long id, ClassRequest classRequest) {
-       if  (classMappers.find(classRepository, id).equals(classRequest)) {
-           ClassEntity classUpdate = classMappers.classReqtoEntity(classRequest);
-//           classRepository.save(classUpdate);
-           return this.classMappers.classEntityToResponse(classRepository.save(classUpdate));
-       }else{
-           ClassEntity classEntity = classMappers.classReqtoEntity(classRequest);
-            return this.classMappers.classEntityToResponse(classRepository.save(classEntity));
+
+        ClassEntity classEn = this.classMappers.find(classRepository, id);
+        classEn = this.classMappers.classReqtoEntity(classRequest);
+        classEn.setId(id);
+        return this.classMappers.classEntityToResponse(this.classRepository.save(classEn));
+    }
+//       if  (classMappers.find(classRepository, id).equals(classRequest)) {
+//           ClassEntity classUpdate = classMappers.classReqtoEntity(classRequest);
+////           classRepository.save(classUpdate);
+//           return this.classMappers.classEntityToResponse(classRepository.save(classUpdate));
+//       }else{
+//           ClassEntity classEntity = classMappers.classReqtoEntity(classRequest);
+//            return this.classMappers.classEntityToResponse(classRepository.save(classEntity));
 
 //        if((classMappers.find(classRepository, id)) {
 //            System.out.println(classRequest);
@@ -68,8 +74,6 @@ public class ClassService implements IClassService {
 //            ClassEntity classEntity = classMappers.classReqtoEntity(classRequest);
 //            return this.classMappers.classEntityToResponse(classRepository.save(classEntity));
 //        }
-       }
-    }
 
     @Override
     public void delete(Long aLong) {
@@ -87,4 +91,6 @@ public class ClassService implements IClassService {
                 .build();
 
     }
+
+
 }

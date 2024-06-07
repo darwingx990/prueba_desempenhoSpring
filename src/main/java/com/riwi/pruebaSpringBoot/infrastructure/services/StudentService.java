@@ -45,6 +45,7 @@ public class StudentService implements IStudentService {
                 .orElseThrow(() -> new RuntimeException("Course not found"));
         studentReq.setClassId(classEntity.getId());
         Student student = this.studentReqtoEntity(studentReq);
+        student.setClassId(classEntity);
 //        StudentResponse studentResp = this.entityToResponse(student);
         return this.entityToResponse(studentRepository.save(student));
 
