@@ -15,7 +15,7 @@ public class StudentController {
     private StudentService studentService;
 
     @GetMapping(path = "/{id}")
-    public ResponseEntity<StudentResponse> getById(@Validated @RequestParam Long id) {
+    public ResponseEntity<StudentResponse> getById(@Validated @PathVariable Long id) {
             return  ResponseEntity.ok(this.studentService.getById(id));
     }
 

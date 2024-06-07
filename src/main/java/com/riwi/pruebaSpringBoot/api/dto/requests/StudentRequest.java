@@ -1,5 +1,6 @@
 package com.riwi.pruebaSpringBoot.api.dto.requests;
 
+import com.riwi.pruebaSpringBoot.domain.entities.ClassEntity;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -21,4 +22,6 @@ public class StudentRequest {
     private String email;
     @NotNull(message = "The field 'Active' is required")
     private Boolean active;
+    @NotNull(message = "Class must not be null.")
+    private Long classId;
 }

@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,5 +20,7 @@ public class ClassRequest {
     private String description;
     @NotNull(message = "The field 'Active' is required")
     private Boolean active;
+
+//    private List<Student> studentList;
 
 }

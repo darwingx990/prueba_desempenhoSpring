@@ -23,8 +23,9 @@ public class Student {
     @Column(nullable = false)
     @Email
     private String email;
+    @Builder.Default
     @Column(nullable = false)
-    private LocalDateTime createdAt;
+    private LocalDateTime createdAt= LocalDateTime.now();
     @Column(nullable = false)
     private Boolean active;
 

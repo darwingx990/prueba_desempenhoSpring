@@ -7,13 +7,13 @@ import com.riwi.pruebaSpringBoot.domain.repositories.ClassRepository;
 import com.riwi.pruebaSpringBoot.infrastructure.abstract_service.IClassService;
 import com.riwi.pruebaSpringBoot.infrastructure.mappers.ClassMappers;
 import com.riwi.pruebaSpringBoot.utils.enums.SortType;
-import com.riwi.pruebaSpringBoot.utils.exceptions.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class ClassService implements IClassService {
@@ -26,6 +26,10 @@ public class ClassService implements IClassService {
     public ClassResponse getById(Long id) {
         return classMappers.classEntityToResponse(classMappers.find(classRepository, id));
     }
+
+//    public ClassResponse getByNameOrDescription(String name, String description) {
+//        return classRepository.findByClassNameOrDescription(name, description);
+//    }
 
     @Override
     public Page<ClassResponse> getAll(int page, int size, SortType sortType) {
@@ -47,12 +51,24 @@ public class ClassService implements IClassService {
 
     @Override
     public ClassResponse update(Long id, ClassRequest classRequest) {
-       if (classMappers.find(classRepository, id) != null){
-        ClassEntity classUpdate = classMappers.classReqtoEntity(classRequest);
-        classRepository.save(classUpdate);
-        return this.classMappers.classEntityToResponse(classRepository.save(classUpdate));}
-       else {ClassEntity classEntity= classMappers.classReqtoEntity(classRequest);
-       return this.classMappers.classEntityToResponse(classRepository.save(classEntity));}
+       if  (classMappers.find(classRepository, id).equals(classRequest)) {
+           ClassEntity classUpdate = classMappers.classReqtoEntity(classRequest);
+//           classRepository.save(classUpdate);
+           return this.classMappers.classEntityToResponse(classRepository.save(classUpdate));
+       }else{
+           ClassEntity classEntity = classMappers.classReqtoEntity(classRequest);
+            return this.classMappers.classEntityToResponse(classRepository.save(classEntity));
+
+//        if((classMappers.find(classRepository, id)) {
+//            System.out.println(classRequest);
+//            ClassEntity classUpdate = classMappers.classReqtoEntity(classRequest);
+////             classRepository.save(classUpdate);
+//            return this.classMappers.classEntityToResponse(classRepository.save(classUpdate));
+//        } else {
+//            ClassEntity classEntity = classMappers.classReqtoEntity(classRequest);
+//            return this.classMappers.classEntityToResponse(classRepository.save(classEntity));
+//        }
+       }
     }
 
     @Override
@@ -60,7 +76,7 @@ public class ClassService implements IClassService {
 
     }
 
-    public ClassResponse classEntityToResponse(ClassEntity classEntity){
+    public ClassResponse classEntityToResponse(ClassEntity classEntity) {
 
         return ClassResponse.builder()
                 .id(classEntity.getId())
